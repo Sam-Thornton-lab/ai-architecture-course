@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brochure — AI for Software Designers & Solution Architects | Thornton LLC</title>
+    <meta name="description" content="Corporate brochure for Thornton LLC's 10-week AI for Software Designers & Solution Architects course.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        brand: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 600: '#475569', 500: '#64748b', 400: '#94a3b8', 300: '#cbd5e1', 200: '#e2e8f0', 100: '#f1f5f9', 50: '#f8fafc' },
+                        accent: '#2563eb',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --accent: #2563eb; --brand: #0f172a; --gold: #b08d3c; --ink: #1e293b; }
+        html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body { font-family: 'Inter', system-ui, sans-serif; color: #1e293b; }
+
+        @media screen {
+            body { background: #f1f5f9; padding: 24px 0; }
+            .page {
+                width: 210mm; min-height: 297mm; margin: 0 auto 24px;
+                background: white; box-shadow: 0 10px 30px rgba(15,23,42,0.10);
+            }
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: white; padding: 0; margin: 0; }
+            .page {
+                width: 210mm; height: 297mm; margin: 0; padding: 18mm;
+                box-shadow: none; page-break-after: always;
+                box-sizing: border-box; overflow: hidden;
+            }
+            .page:last-of-type { page-break-after: auto; }
+            .no-print { display: none !important; }
+
+            h1, h2, h3, h4 { page-break-after: avoid; }
+            .week-card, .section-header, .info-box, .cta-box, .quick-fact { break-inside: avoid; }
+            ul, ol { break-inside: avoid; }
+            li { break-inside: avoid; }
+            a { text-decoration: none; color: inherit; }
+        }
+
+        .page { padding: 18mm; display: flex; flex-direction: column; }
+        .brand-rule { border-top: 3px solid var(--brand); }
+        .gold-rule { border-top: 2px solid var(--gold); }
+
+        /* Refined display headings */
+        .display-heading {
+            font-family: 'Playfair Display', Georgia, serif;
+            letter-spacing: -0.01em;
+        }
+        .page-header {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px; font-weight: 700; color: var(--brand);
+            padding-bottom: 8px; margin-bottom: 14px;
+            border-bottom: 2px solid var(--brand);
+            position: relative;
+        }
+        .page-header::after {
+            content: ''; position: absolute; left: 0; bottom: -2px;
+            width: 64px; height: 2px; background: var(--gold);
+        }
+
+        /* Running header & footer */
+        .running-header {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 8.5px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.12em; color: #94a3b8;
+            border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 14px;
+        }
+        .running-footer {
+            margin-top: auto; padding-top: 10px;
+            border-top: 1px solid #e2e8f0;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 9px; color: #64748b;
+        }
+
+        /* Section headers: lighter, refined */
+        .section-header {
+            background: linear-gradient(to right, #f8fafc, transparent);
+            border-left: 3px solid var(--gold);
+            padding: 8px 12px; margin: 16px 0 10px;
+            font-weight: 700; font-size: 11px; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--brand);
+            break-inside: avoid;
+        }
+
+        /* Week cards as subtle bordered cards */
+        .week-card {
+            border: 1px solid #e2e8f0; border-left: 3px solid var(--accent);
+            border-radius: 4px; background: #ffffff;
+            padding: 10px 12px; margin-bottom: 10px;
+            break-inside: avoid;
+        }
+        .week-title { font-weight: 800; color: #0f172a; font-size: 11.5px; letter-spacing: -0.005em; }
+        .week-title .week-num { color: var(--accent); margin-right: 4px; }
+        .week-content { font-size: 10.5px; color: #334155; line-height: 1.55; margin-top: 4px; }
+        .outcome { font-size: 10px; color: #475569; margin-left: 10px; padding: 1.5px 0; }
+
+        .info-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; break-inside: avoid; }
+        .cta-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white; break-inside: avoid;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+        }
+        .cta-box .kicker { color: #f0d9a8; }
+
+        .quick-fact { border-top: 2px solid var(--gold); padding-top: 6px; }
+    </style>
+</head>
+<body class="text-brand-900">
+
+    <!-- PAGE 1: COVER & OVERVIEW -->
+    <section class="page">
+        <header class="flex-1 flex flex-col justify-between">
+            <div>
+                <div class="brand-rule pt-5 mb-10 flex items-end justify-between">
+                    <div>
+                        <h1 class="display-heading text-4xl font-bold text-brand-900">THORNTON <span class="text-brand-500">LLC</span></h1>
+                        <p class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-500 mt-2">Professional Technical Training</p>
+                    </div>
+                    <div class="gold-rule w-16 mb-2"></div>
+                </div>
+
+                <div class="cta-box p-9 mb-10">
+                    <p class="kicker text-[10px] font-bold uppercase tracking-[0.25em] mb-4">Course Brochure · 2026</p>
+                    <h2 class="display-heading text-3xl font-bold leading-snug mb-3">AI for Software Designers &amp; Solution Architects</h2>
+                    <div class="gold-rule w-14 mb-4"></div>
+                    <p class="text-brand-300 text-sm">Comprehensive 10-Week Executive Course</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-x-8 gap-y-6 mb-8">
+                    <div class="quick-fact">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-brand-500 mb-1">Program Duration</p>
+                        <p class="text-lg font-bold text-brand-900">10 Weeks</p>
+                        <p class="text-[10px] text-brand-600">Thursdays @ 7 PM AEST</p>
+                    </div>
+                    <div class="quick-fact">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-brand-500 mb-1">Format</p>
+                        <p class="text-lg font-bold text-brand-900">Live Interactive</p>
+                        <p class="text-[10px] text-brand-600">Expert-Led Sessions</p>
+                    </div>
+                    <div class="quick-fact">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-brand-500 mb-1">Instructor</p>
+                        <p class="text-lg font-bold text-brand-900">Sam Thornton</p>
+                        <p class="text-[10px] text-brand-600">20+ Years Expertise</p>
+                    </div>
+                    <div class="quick-fact">
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-brand-500 mb-1">Delivery</p>
+                        <p class="text-lg font-bold text-brand-900">Hybrid Model</p>
+                        <p class="text-[10px] text-brand-600">Labs & Projects</p>
+                    </div>
+                </div>
+
+                <div class="info-box border-l-4 border-accent p-5 rounded-r-lg">
+                    <h3 class="font-extrabold text-brand-900 text-xs uppercase tracking-wide mb-2">Executive Summary</h3>
+                    <p class="text-[10.5px] text-brand-700 leading-relaxed">
+                        Master AI-augmented architecture in the modern enterprise. This intensive program equips solution architects, engineering leaders, and senior developers with advanced skills in leveraging generative AI for system design, documentation, infrastructure automation, and strategic technical decision-making. Through hands-on labs, real-world case studies, and expert-led sessions, you'll learn to design resilient, scalable systems enhanced by cutting-edge AI capabilities.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="running-footer mt-6">
+                <p>© 2026 Thornton LLC. All rights reserved.</p>
+                <p class="font-semibold text-brand-400">Page 1 of 5</p>
+            </footer>
+        </header>
+    </section>
+
+    <!-- PAGE 2: DETAILED CURRICULUM -->
+    <section class="page">
+        <div class="running-header">
+            <span>Thornton LLC</span>
+            <span>AI for Software Designers &amp; Solution Architects</span>
+        </div>
+        <header class="mb-5">
+            <h2 class="page-header">Detailed Curriculum</h2>
+            <p class="text-[10px] text-brand-500 mt-1 tracking-wide">10-Week Comprehensive Program with Assignments &amp; Hands-On Exercises</p>
+        </header>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 0: Orientation & AI Paradigm Shift</h3>
+            <div class="week-content">
+                <p class="mb-1">Foundation course introducing the mindset shift required for AI-augmented architecture. Explore how generative AI transforms the design process.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Understand core concepts and terminology in AI/ML and generative models</li>
+                    <li class="outcome">• Develop mental models for AI-first architectural thinking</li>
+                    <li class="outcome">• Explore real-world case studies of AI-driven transformation</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Assignment: Reflection Essay (500 words)</p>
+                <p class="outcome">Document three architectural challenges where AI could provide value in your organization.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 1: Architectural Foundations & AI-Driven Documentation</h3>
+            <div class="week-content">
+                <p class="mb-1">Leverage AI for creating Architecture Decision Records (ADRs), capturing non-functional requirements, and documenting design trade-offs with precision.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Master ADR templates and AI-powered documentation workflows</li>
+                    <li class="outcome">• Capture and prioritize non-functional requirements using AI assistance</li>
+                    <li class="outcome">• Create technology radar and strategic alignment documents</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Hands-On Exercise: Create 3 ADRs</p>
+                <p class="outcome">Using AI prompting, generate comprehensive ADRs for a real or hypothetical system migration.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 2: Domain-Driven Design & AI Event Storming</h3>
+            <div class="week-content">
+                <p class="mb-1">Apply DDD principles with AI-enhanced event storming sessions to identify bounded contexts, aggregates, and domain events at scale.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Facilitate AI-assisted event storming workshops</li>
+                    <li class="outcome">• Identify and model bounded contexts in complex domains</li>
+                    <li class="outcome">• Design aggregate structures and establish domain language</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Lab Exercise: Domain Model Design</p>
+                <p class="outcome">Build event-driven architecture for a multi-bounded-context system.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 3: System Diagramming & Text-to-Diagram Automation</h3>
+            <div class="week-content">
+                <p class="mb-1"><strong>Guest Speaker Session</strong> • Generate system architecture diagrams, C4 models, and flow diagrams directly from AI-generated textual descriptions.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Create C4 context, container, and component diagrams</li>
+                    <li class="outcome">• Use AI to generate diagram-as-code (Mermaid, PlantUML)</li>
+                    <li class="outcome">• Maintain diagram consistency and versioning</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Assignment: Complete System Architecture</p>
+                <p class="outcome">Generate full C4 model with AI assistance for a real business domain.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 4: Cloud Infrastructure & IaC Automation with AI</h3>
+            <div class="week-content">
+                <p class="mb-1">Design cloud-native architectures and auto-generate Infrastructure-as-Code configurations using AI prompting and best practices.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Architect multi-region, highly-available cloud systems</li>
+                    <li class="outcome">• Generate Terraform/CloudFormation with AI assistance</li>
+                    <li class="outcome">• Optimize cost and performance in cloud design</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Hands-On Lab: Infrastructure Design</p>
+                <p class="outcome">Design and implement IaC for a production cloud environment.</p>
+            </div>
+        </article>
+
+        <footer class="running-footer">
+            <p><em>Continued on next page…</em></p>
+            <p class="font-semibold text-brand-400">Page 2 of 5</p>
+        </footer>
+    </section>
+
+    <!-- PAGE 3: CURRICULUM CONTINUED -->
+    <section class="page">
+        <div class="running-header">
+            <span>Thornton LLC</span>
+            <span>AI for Software Designers &amp; Solution Architects</span>
+        </div>
+        <header class="mb-5">
+            <h2 class="page-header">Detailed Curriculum <span class="text-brand-400 text-base font-sans font-semibold">(Continued)</span></h2>
+            <p class="text-[10px] text-brand-500 mt-1 tracking-wide">Weeks 5–10</p>
+        </header>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 5: API Architecture & Integration Design</h3>
+            <div class="week-content">
+                <p class="mb-1">Master REST, GraphQL, and gRPC design patterns enhanced with AI-generated specifications, OpenAPI documentation, and contract testing.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Design API-first architectures and integration patterns</li>
+                    <li class="outcome">• Generate OpenAPI specifications and API documentation with AI</li>
+                    <li class="outcome">• Implement API versioning and backward compatibility strategies</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Project Exercise: API Suite Design</p>
+                <p class="outcome">Design a complete API strategy for a microservices ecosystem.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 6: Data Architecture & Vector Databases</h3>
+            <div class="week-content">
+                <p class="mb-1"><strong>Guest Speaker Session</strong> • Explore modern data patterns, vector databases, embeddings, and data pipeline architectures for AI workloads.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Design scalable data warehouses and data lakes</li>
+                    <li class="outcome">• Implement vector search and semantic similarity patterns</li>
+                    <li class="outcome">• Optimize ETL/ELT pipelines for AI and analytics</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Lab Assignment: Data Pipeline Design</p>
+                <p class="outcome">Build end-to-end data architecture supporting ML/AI inference.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 7: Security, Zero-Trust & AI Threat Modeling</h3>
+            <div class="week-content">
+                <p class="mb-1">Apply zero-trust architecture principles and use AI to perform threat modeling, risk assessment, and security hardening at scale.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Design zero-trust security architectures</li>
+                    <li class="outcome">• Conduct AI-assisted threat modeling and risk analysis</li>
+                    <li class="outcome">• Implement identity, encryption, and compliance patterns</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Assignment: Threat Model & Mitigation Plan</p>
+                <p class="outcome">Create comprehensive threat model with AI-generated risk assessment.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 8: Code-Level Architecture & SOLID Principles</h3>
+            <div class="week-content">
+                <p class="mb-1">Translate architectural vision into clean, maintainable code using SOLID principles, design patterns, and AI-assisted code review practices.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Apply SOLID principles in real codebases</li>
+                    <li class="outcome">• Implement tactical design patterns with AI guidance</li>
+                    <li class="outcome">• Use AI for code review and architectural compliance</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Hands-On Exercise: Code Refactoring</p>
+                <p class="outcome">Refactor legacy code using AI-assisted analysis and SOLID principles.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 9: GenAI Architecture & Production RAG Systems</h3>
+            <div class="week-content">
+                <p class="mb-1"><strong>Guest Speaker Session</strong> • Design production-grade Retrieval-Augmented Generation (RAG) systems, LLM integration patterns, and AI pipeline architectures.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Learning Outcomes:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Design RAG architectures for knowledge-intensive applications</li>
+                    <li class="outcome">• Integrate LLMs into production systems safely and efficiently</li>
+                    <li class="outcome">• Implement monitoring, caching, and optimization strategies</li>
+                </ul>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Project: RAG System Architecture</p>
+                <p class="outcome">Design complete RAG pipeline for enterprise knowledge management.</p>
+            </div>
+        </article>
+
+        <article class="week-card">
+            <h3 class="week-title">Week 10: Capstone Defense & System Architecture Review</h3>
+            <div class="week-content">
+                <p class="mb-1">Present comprehensive architecture projects, defend design decisions, receive expert feedback, and earn certification of completion.</p>
+                <p class="font-semibold text-brand-800 text-[10px] mt-1 mb-0.5">Capstone Requirements:</p>
+                <ul class="list-none">
+                    <li class="outcome">• Complete system architecture document (10–15 pages)</li>
+                    <li class="outcome">• Live presentation (20 minutes) + Q&A session (10 minutes)</li>
+                    <li class="outcome">• Peer and instructor feedback session</li>
+                    <li class="outcome">• Architecture portfolio submission for future reference</li>
+                </ul>
+            </div>
+        </article>
+
+        <footer class="running-footer">
+            <p>Each week includes supplementary materials, recorded sessions, and office hours with the instructor.</p>
+            <p class="font-semibold text-brand-400">Page 3 of 5</p>
+        </footer>
+    </section>
+
+    <!-- PAGE 4: LEARNING OUTCOMES & REQUIREMENTS -->
+    <section class="page">
+        <div class="running-header">
+            <span>Thornton LLC</span>
+            <span>AI for Software Designers &amp; Solution Architects</span>
+        </div>
+        <header class="mb-6">
+            <h2 class="page-header">Learning Outcomes &amp; Requirements</h2>
+        </header>
+
+        <section>
+            <h3 class="section-header">Key Learning Outcomes</h3>
+            <ul class="text-[10.5px] text-brand-700 space-y-1.5 ml-3 mb-5">
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Design enterprise-grade architectures enhanced by AI capabilities</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Create comprehensive documentation and decision records with AI assistance</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Master cloud infrastructure, APIs, and data architecture patterns</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Implement zero-trust security and threat modeling strategies</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Design production-grade AI/ML pipelines and RAG systems</li>
+                <li class="flex items-start gap-2"><span class="text-accent font-bold">✓</span> Lead architectural discussions and influence technical strategy</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="section-header">Target Audience</h3>
+            <ul class="text-[10.5px] text-brand-700 space-y-1.5 ml-3 mb-5">
+                <li>• <strong>Solution Architects</strong> — Designing systems at enterprise scale</li>
+                <li>• <strong>Engineering Leaders</strong> — VPs, CTOs, and technical directors</li>
+                <li>• <strong>Senior Software Engineers</strong> — Transitioning to architectural roles</li>
+                <li>• <strong>Technical Leads</strong> — Designing complex systems and mentoring teams</li>
+                <li>• <strong>ML/AI Engineers</strong> — Seeking full-stack system design knowledge</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="section-header">Prerequisites</h3>
+            <ul class="text-[10.5px] text-brand-700 space-y-1.5 ml-3 mb-5">
+                <li>• 5+ years of professional software engineering experience</li>
+                <li>• Solid understanding of system design and architectural principles</li>
+                <li>• Familiarity with cloud platforms (AWS, Azure, GCP) is beneficial</li>
+                <li>• Basic exposure to generative AI tools (optional, will be covered)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="section-header">Delivery & Support</h3>
+            <ul class="text-[10.5px] text-brand-700 space-y-1.5 ml-3 mb-5">
+                <li>• <strong>Format:</strong> Live interactive sessions with expert instructor (Sam Thornton)</li>
+                <li>• <strong>Schedule:</strong> Thursdays, 7:00 PM AEST (60–90 minutes per session)</li>
+                <li>• <strong>Guest Speakers:</strong> Industry experts in specialized topics (Weeks 3, 6, 9)</li>
+                <li>• <strong>Hands-On Labs:</strong> Real-world exercises and case study projects</li>
+                <li>• <strong>Office Hours:</strong> Weekly Q&A and mentoring sessions</li>
+                <li>• <strong>Recordings:</strong> All sessions recorded and available on-demand</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="section-header">Certification & Completion</h3>
+            <p class="text-[10.5px] text-brand-700 ml-3 mb-1.5">Upon successful completion of all assignments, labs, and the capstone project, participants receive:</p>
+            <ul class="text-[10.5px] text-brand-700 space-y-1 ml-6 mb-5">
+                <li>• Course completion certificate from Thornton LLC</li>
+                <li>• Digital badge for professional profiles (LinkedIn, etc.)</li>
+                <li>• Capstone project portfolio for career advancement</li>
+                <li>• 1-year access to course materials and recordings</li>
+            </ul>
+        </section>
+
+        <footer class="running-footer">
+            <p>© 2026 Thornton LLC. All rights reserved.</p>
+            <p class="font-semibold text-brand-400">Page 4 of 5</p>
+        </footer>
+    </section>
+
+    <!-- PAGE 5: CONTACT & ENROLLMENT -->
+    <section class="page">
+        <div class="running-header">
+            <span>Thornton LLC</span>
+            <span>AI for Software Designers &amp; Solution Architects</span>
+        </div>
+        <header class="mb-6">
+            <h2 class="page-header">Enrollment &amp; Contact</h2>
+        </header>
+
+        <section class="mb-6">
+            <h3 class="section-header">How to Enroll</h3>
+            <p class="text-[10.5px] text-brand-700 ml-3 mb-4 leading-relaxed">
+                This is an exclusive, limited-enrollment course designed for serious learners committed to advancing their architectural expertise. Enrollment includes personalized assessment, curriculum customization for your role, and dedicated support throughout the program.
+            </p>
+            <div class="info-box border-l-4 border-accent p-4 ml-3 rounded-r-lg">
+                <p class="font-bold text-brand-900 text-[10.5px] mb-1">Early Bird Pricing Available</p>
+                <p class="text-[10px] text-brand-700">Contact us to discuss enrollment options, group rates for teams, and customization for your organization's specific needs.</p>
+            </div>
+        </section>
+
+        <section class="mb-6">
+            <h3 class="section-header">Course Investment</h3>
+            <div class="grid grid-cols-2 gap-4 ml-3">
+                <div class="info-box p-4 text-center" style="border-top: 3px solid var(--gold);">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-500 mb-1">Australia</p>
+                    <p class="display-heading text-2xl font-bold text-brand-900">$3,450 <span class="text-xs font-sans font-semibold text-brand-500">AUD</span></p>
+                    <p class="text-[9.5px] text-brand-600 mt-1">Full 10-week program, all materials included</p>
+                </div>
+                <div class="info-box p-4 text-center" style="border-top: 3px solid var(--gold);">
+                    <p class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-500 mb-1">New Zealand</p>
+                    <p class="display-heading text-2xl font-bold text-brand-900">$4,158 <span class="text-xs font-sans font-semibold text-brand-500">NZD</span></p>
+                    <p class="text-[9.5px] text-brand-600 mt-1">Full 10-week program, all materials included</p>
+                </div>
+            </div>
+            <p class="text-[9px] text-brand-500 ml-3 mt-2 italic">Pricing is based on your location. Group rates and payment plans available on request.</p>
+        </section>
+
+        <section class="mb-6">
+            <h3 class="section-header">Contact Information</h3>
+            <div class="grid grid-cols-1 gap-4 ml-3">
+                <div class="quick-fact">
+                    <p class="font-extrabold text-brand-900 text-xs mb-1">Location</p>
+                    <p class="text-[10.5px] text-brand-700 leading-relaxed">Level 40, 140 William Street<br>Melbourne, VIC 3000<br>Australia</p>
+                </div>
+                <div class="quick-fact">
+                    <p class="font-extrabold text-brand-900 text-xs mb-1">Phone</p>
+                    <p class="text-[10.5px]"><a href="tel:+61421649655" class="text-accent font-semibold">+61 421 649 655</a></p>
+                </div>
+                <div class="quick-fact">
+                    <p class="font-extrabold text-brand-900 text-xs mb-1">Email</p>
+                    <p class="text-[10.5px]"><a href="mailto:sampenkinpa83@gmail.com" class="text-accent font-semibold">sampenkinpa83@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-box rounded-lg p-6 mt-auto">
+            <h3 class="display-heading font-bold text-base mb-2">Ready to Transform Your Architectural Practice?</h3>
+            <p class="text-[10.5px] text-brand-200 leading-relaxed mb-3">
+                Join a cohort of elite architects and technical leaders who are mastering AI-augmented design. Limited spots available. Apply now to secure your enrollment.
+            </p>
+            <p class="text-[10.5px] font-semibold text-white">Next cohort starting soon. Contact us for details and enrollment deadlines.</p>
+        </section>
+
+        <footer class="running-footer mt-4">
+            <p>© 2026 Thornton LLC. All rights reserved.</p>
+            <p class="font-semibold text-brand-400">Page 5 of 5</p>
+        </footer>
+    </section>
+
+    <!-- Print Button -->
+    <div class="no-print text-center py-8 max-w-3xl mx-auto px-6">
+        <button type="button" onclick="window.print()" class="bg-brand-900 hover:bg-brand-800 text-white font-bold py-3 px-10 rounded-full text-base transition shadow-lg">
+            Print or Save as PDF
+        </button>
+        <p class="text-xs text-brand-500 mt-4 max-w-md mx-auto">
+            For best results, open Print → set paper size to A4, disable headers/footers, set margins to “None,” and choose “Save as PDF.”
+        </p>
+    </div>
+</body>
+</html>

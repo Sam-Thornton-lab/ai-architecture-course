@@ -1,157 +1,678 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for Software Designers & Solution Architects</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thornton LLC — Professional AI Training</title>
+    <meta name="description" content="Executive AI training for architects, engineering leaders, and senior developers. Live online courses in AI-augmented architecture and autonomous AI systems.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                            50: '#f8fafc',
+                        },
+                        course1: '#2563eb',
+                        course2: '#d97706',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --course1: #2563eb;
+            --course2: #d97706;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .nav-scrolled { box-shadow: 0 1px 0 rgba(226, 232, 240, 0.9); }
+        .tab-indicator { transform-origin: left center; transition: transform 0.3s ease, background-color 0.3s ease; }
+        .course-panel { transition: opacity 0.25s ease, transform 0.25s ease; }
+        .course-panel.hidden { display: none; }
+        .course-panel.is-active { opacity: 1; transform: translateY(0); }
+        .course-panel.is-inactive { opacity: 0; transform: translateY(8px); pointer-events: none; }
+        .syllabus-details > summary { list-style: none; cursor: pointer; }
+        .syllabus-details > summary::-webkit-details-marker { display: none; }
+        .syllabus-details > summary::marker { display: none; }
+        .syllabus-details[open] .chevron { transform: rotate(180deg); }
+        .chevron { transition: transform 0.2s ease; }
+        .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07); }
+        .gradient-border { position: relative; }
+        .gradient-border::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0), rgba(226,232,240,1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+        }
+        .accent-line-left { position: relative; }
+        .accent-line-left::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            border-radius: 999px; background: var(--course1);
+        }
+        .course2 .accent-line-left::before { background: var(--course2); }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-brand-50 text-brand-900 antialiased">
 
-  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Live Online Course</span>
-      <a href="#register" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">Apply Now</a>
-    </div>
-  </header>
-
-  <section class="max-w-6xl mx-auto px-6 py-16 md:py-24 text-center md:text-left">
-    <div class="grid md:grid-cols-3 gap-12 items-center">
-      <div class="md:col-span-2 space-y-6">
-        <span class="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Executive Training</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          AI for Software Designers & Solution Architects
-        </h1>
-        <p class="text-lg text-slate-400">
-          Master AI-augmented architecture, domain modeling, and system resilience with 20+ years of enterprise experience.
-        </p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-800/50 border border-slate-800 rounded-xl p-4 text-sm text-slate-300">
-          <div><strong class="text-white block">Dates:</strong> 3 Sep – 3 Nov</div>
-          <div><strong class="text-white block">Schedule:</strong> Thursdays @ 7 PM AEST</div>
-          <div><strong class="text-white block">Duration:</strong> 10 Weeks</div>
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-200 transition-shadow" id="site-header">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold tracking-tight text-brand-900">Thornton LLC</a>
+            <nav aria-label="Primary" class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#courses" class="text-brand-600 hover:text-brand-900 transition-colors">Courses</a>
+                <a href="#contact" class="text-brand-600 hover:text-brand-900 transition-colors">Contact</a>
+            </nav>
+            <a href="mailto:sampenkinpa83@gmail.com?subject=Course%20Application%20Enquiry" class="hidden md:inline-flex items-center justify-center bg-brand-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-brand-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-900">
+                Apply Now
+            </a>
         </div>
-      </div>
+    </header>
 
-      <div class="bg-slate-800 border border-slate-700/60 rounded-2xl p-6 text-center space-y-3 shadow-xl">
-        <div class="w-24 h-24 mx-auto rounded-full bg-blue-600/20 border-2 border-blue-500 flex items-center justify-center text-3xl font-bold text-blue-400">
-          ST
-        </div>
-        <div>
-          <h3 class="text-xl font-bold text-white">Sam Thornton</h3>
-          <p class="text-sm text-blue-400 font-medium">Lead Instructor</p>
-          <p class="text-xs text-slate-400 mt-2">20+ Years Solution Architect</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <main id="courses">
+        <!-- Course Tab Switcher -->
+        <section class="bg-white border-b border-brand-200" aria-label="Course selection">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex" role="tablist" aria-label="Course tabs">
+                    <button
+                        type="button"
+                        role="tab"
+                        id="tab-course1"
+                        aria-controls="course1-content"
+                        aria-selected="true"
+                        data-course="1"
+                        class="course-tab group relative flex-1 md:flex-none md:min-w-[16rem] py-5 text-left md:text-center text-sm md:text-base font-semibold transition-colors text-brand-900"
+                    >
+                        <span class="block truncate">AI for Architects & Designers</span>
+                        <span class="tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-course1" aria-hidden="true"></span>
+                    </button>
+                    <button
+                        type="button"
+                        role="tab"
+                        id="tab-course2"
+                        aria-controls="course2-content"
+                        aria-selected="false"
+                        data-course="2"
+                        class="course-tab group relative flex-1 md:flex-none md:min-w-[16rem] py-5 text-left md:text-center text-sm md:text-base font-semibold transition-colors text-brand-500 hover:text-brand-800"
+                    >
+                        <span class="block truncate">Advanced AI Engineering & Agents</span>
+                        <span class="tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-transparent" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-  <section class="border-t border-slate-800 bg-slate-950 py-16">
-    <div class="max-w-6xl mx-auto px-6 space-y-8">
-      <h2 class="text-2xl font-bold text-white uppercase tracking-wider border-l-4 border-blue-500 pl-3">Who This Course Is For</h2>
-      
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-2">
-          <h3 class="text-lg font-bold text-blue-400">Senior & Solution Architects</h3>
-          <p class="text-sm text-slate-400">Clear operational friction. Leverage AI to draft ADRs, model complex domain contexts, and evaluate system trade-offs.</p>
-        </div>
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-2">
-          <h3 class="text-lg font-bold text-blue-400">Engineering Leads & Managers</h3>
-          <p class="text-sm text-slate-400">Establish enterprise AI architectural guardrails. Learn to evaluate AI infrastructure and automated threat modeling.</p>
-        </div>
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-2">
-          <h3 class="text-lg font-bold text-blue-400">Developers Moving to Architecture</h3>
-          <p class="text-sm text-slate-400">Transition into modern solution architecture. Master C4 diagramming, OpenAPI specs, and cloud topologies.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- COURSE 1 -->
+        <article id="course1-content" class="course-panel is-active" role="tabpanel" aria-labelledby="tab-course1">
+            <section class="bg-white">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        <div>
+                            <span class="inline-block text-xs font-bold uppercase tracking-widest text-course1 mb-4">Live Online Course</span>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                                AI for Architects & Designers
+                            </h1>
+                            <p class="text-lg md:text-xl text-brand-600 leading-relaxed mb-8 max-w-2xl">
+                                Master AI-augmented architecture, domain modeling, and system resilience. Learn where AI accelerates your design process, where it breaks down, and where your professional judgment becomes the real design tool.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-10">
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    10 Weeks
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    Thursdays 7 PM AEST · 3 Sep – 3 Nov
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                    Live Interactive Sessions
+                                </span>
+                            </div>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3] lg:aspect-square">
+                            <div class="absolute inset-0 bg-gradient-to-br from-course1/20 to-brand-900/30 z-10 pointer-events-none"></div>
+                            <img src="image.jpg" alt="AI architecture course visual" class="w-full h-full object-cover" loading="eager">
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <section class="py-16 max-w-6xl mx-auto px-6 space-y-8">
-    <h2 class="text-2xl font-bold text-white uppercase tracking-wider border-l-4 border-blue-500 pl-3">10-Week Master Curriculum</h2>
-    
-    <div class="overflow-x-auto border border-slate-800 rounded-xl">
-      <table class="w-full text-left text-sm text-slate-400">
-        <thead class="bg-slate-800 text-slate-200 uppercase text-xs font-semibold tracking-wider border-b border-slate-700">
-          <tr>
-            <th class="py-4 px-6">Week / Date</th>
-            <th class="py-4 px-6">Module & Core Focus</th>
-            <th class="py-4 px-6">Deliverables & AI Hands-On</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-800">
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 0</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Orientation & AI Paradigm</td>
-            <td class="py-4 px-6">Reframing architecture in the AI era. Overview of final RFC + C4 diagram package.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 1 (3 Sep)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Architectural Foundations</td>
-            <td class="py-4 px-6">Prompt engineering for Architecture Decision Records (ADRs) & NFR evaluation.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 2 (10 Sep)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Domain-Driven Design (DDD)</td>
-            <td class="py-4 px-6">Event storming simulations & bounded context mapping via AI tools.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 3 (17 Sep)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">System Diagramming <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs px-2 py-0.5 rounded ml-2">Guest Speaker</span></td>
-            <td class="py-4 px-6">Text-to-diagram workflows using Structurizr DSL, PlantUML & Eraser.io.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 4 (24 Sep)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Cloud & IaC</td>
-            <td class="py-4 px-6">Generating Terraform templates via AI agents. Cost & topology trade-off evaluation.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 5 (1 Oct)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">API Architecture & Integration</td>
-            <td class="py-4 px-6">OpenAPI 3.0 spec generation, REST vs GraphQL vs gRPC evaluation.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 6 (8 Oct)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Data Architecture & Vector DBs <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs px-2 py-0.5 rounded ml-2">Guest Speaker</span></td>
-            <td class="py-4 px-6">Polyglot persistence selection matrices and integrating pgvector/Pinecone.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 7 (15 Oct)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Security & Threat Modeling</td>
-            <td class="py-4 px-6">AI-assisted STRIDE threat modeling, zero-trust design, and SOC2 auditing.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 8 (22 Oct)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Code-Level Architecture</td>
-            <td class="py-4 px-6">Enforcing SOLID principles in Cursor / Copilot Workspace with custom `.cursorrules`.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 9 (29 Oct)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">GenAI Architecture & RAG <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs px-2 py-0.5 rounded ml-2">Guest Speaker</span></td>
-            <td class="py-4 px-6">Architecting production RAG pipelines, agent orchestration, and fallback design.</td>
-          </tr>
-          <tr class="hover:bg-slate-800/30">
-            <td class="py-4 px-6 font-bold text-blue-400">Week 10 (3 Nov)</td>
-            <td class="py-4 px-6 font-semibold text-slate-200">Capstone Defense</td>
-            <td class="py-4 px-6">Final peer reviews and system architecture package defense before expert panel.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+            <section class="bg-brand-50 border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">This Course Is For You, If…</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10">
+                            <h3 class="text-xl font-bold mb-3">Senior & Solution Architects</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Master AI-augmented architecture, domain modeling, and system resilience. Learn to leverage AI for drafting ADRs and evaluating complex trade-offs.
+                            </p>
+                        </article>
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10">
+                            <h3 class="text-xl font-bold mb-3">Engineering Leads & Managers</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Establish enterprise AI architectural guardrails. Learn to evaluate AI infrastructure and implement automated threat modeling.
+                            </p>
+                        </article>
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10">
+                            <h3 class="text-xl font-bold mb-3">Developers Moving to Architecture</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Transition into modern solution architecture. Master C4 diagramming, OpenAPI specs, and cloud topology design.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-  <footer id="register" class="border-t border-slate-800 bg-slate-950 py-12">
-    <div class="max-w-6xl mx-auto px-6 text-center space-y-4">
-      <h3 class="text-xl font-bold text-white">Enrollment & Inquiries</h3>
-      <p class="text-slate-400 text-sm">Level 40, 140 William Street, Melbourne, VIC 3000, Australia</p>
-      <div class="text-sm text-slate-300 space-x-4">
-        <span><strong>Phone:</strong> +61 421 649 655</span>
-        <span>•</span>
-        <span><strong>Email:</strong> <a href="mailto:sampenkinpa83@gmail.com" class="text-blue-400 underline">Sam Thornton</a></span>
-      </div>
-      <p class="text-xs text-slate-500 pt-6">© 2026 Sam Thornton AI Architecture Course. All rights reserved.</p>
-    </div>
-  </footer>
+            <section class="bg-white border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">About The Course</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">01</div>
+                            <h3 class="text-xl font-bold mb-3">Comprehensive Curriculum</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Progress through the full architectural workflow with AI augmentation at each stage. Understand where AI accelerates practice and where your judgment remains essential.
+                            </p>
+                        </article>
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">02</div>
+                            <h3 class="text-xl font-bold mb-3">Hands-On Projects</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Work with real-world architectural challenges. Get hands-on with AI tools including code generation, diagramming, and infrastructure automation.
+                            </p>
+                        </article>
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">03</div>
+                            <h3 class="text-xl font-bold mb-3">Capstone Project</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Build a portfolio-quality, AI-augmented architecture project. Develops progressively and culminates in peer review and expert feedback.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
+            <section class="bg-brand-900 text-white border-t border-brand-800">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-8">Instructor</h2>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Sam Thornton</h3>
+                            <p class="text-brand-300 text-lg mb-6">20+ Years Solution Architect</p>
+                            <p class="text-brand-100 leading-relaxed mb-4">
+                                Expert in enterprise architecture, AI integration, and system design patterns. Sam brings decades of experience from complex architectural projects across Fortune 500 companies.
+                            </p>
+                            <p class="text-brand-100 leading-relaxed">
+                                Specialized in translating business requirements into resilient, scalable AI-augmented architectures while maintaining strategic clarity and technical excellence.
+                            </p>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-brand-700 aspect-[4/3] lg:aspect-square">
+                            <img src="image.jpg" alt="Sam Thornton, instructor" class="w-full h-full object-cover opacity-90">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-brand-50 border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">10-Week Syllabus</h2>
+                    <div class="grid md:grid-cols-2 gap-4" data-accordion="course1">
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 0: Orientation & AI Paradigm</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Foundation for AI-assisted architecture and mindset shifts.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 1: Architectural Foundations</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Prompting for ADRs & Non-Functional Requirements.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 2: Domain-Driven Design & Event Storming</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Strategic design patterns with AI collaboration.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 3: System Diagramming & Text-to-Diagram</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Guest Speaker • Automated diagram generation.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 4: Cloud Infrastructure & IaC Automation</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                AI-driven Infrastructure as Code and cloud design.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 5: API Architecture & Integration</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                REST, GraphQL, gRPC design and AI-powered APIs.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 6: Data Architecture & Vector Databases</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Guest Speaker • Modern data patterns and storage.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 7: Security, Zero-Trust & Threat Modeling</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Enterprise security patterns with AI analysis.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 8: Code-Level Architecture & SOLID</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Architectural principles in code.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover md:col-span-2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 9: GenAI Architecture & Production RAG</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Guest Speaker • Production-grade AI systems.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover md:col-span-2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 10: Capstone Defense & System Review</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Final project presentation and expert feedback.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="apply-course1" class="bg-white border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Ready to Transform Your Practice?</h2>
+                    <p class="text-brand-600 mb-8 max-w-2xl mx-auto">Join the next cohort of architects and engineering leaders mastering AI-augmented design.</p>
+                    <a href="mailto:sampenkinpa83@gmail.com?subject=Application%3A%20AI%20for%20Architects%20%26%20Designers" class="inline-flex items-center justify-center bg-course1 text-white font-semibold px-10 py-4 rounded-full hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-course1 text-lg">
+                        Apply Now
+                    </a>
+                </div>
+            </section>
+        </article>
+
+        <!-- COURSE 2 -->
+        <article id="course2-content" class="course-panel hidden is-inactive" role="tabpanel" aria-labelledby="tab-course2">
+            <section class="bg-white">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        <div>
+                            <span class="inline-block text-xs font-bold uppercase tracking-widest text-course2 mb-4">Live Online Course</span>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                                Advanced AI Engineering & Autonomous Agents
+                            </h1>
+                            <p class="text-lg md:text-xl text-brand-600 leading-relaxed mb-8 max-w-2xl">
+                                Master cutting-edge AI systems, multi-agent orchestration, and production-ready autonomous solutions. Build scalable AI systems from LLM fundamentals through production deployment.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-10">
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    8 Weeks
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    Tuesdays 7 PM AEST
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-50 border border-brand-200 rounded-full text-sm font-semibold text-brand-800">
+                                    <svg class="w-4 h-4 text-course2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                                    Code Labs & Hands-On
+                                </span>
+                            </div>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3] lg:aspect-square">
+                            <div class="absolute inset-0 bg-gradient-to-br from-course2/20 to-brand-900/30 z-10 pointer-events-none"></div>
+                            <img src="image.jpg" alt="Advanced AI engineering course visual" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-brand-50 border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">This Course Is For You, If…</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10 course2">
+                            <h3 class="text-xl font-bold mb-3">Senior Developers</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Build production-grade AI systems. Master LLMs, function calling, and advanced retrieval techniques for enterprise applications.
+                            </p>
+                        </article>
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10 course2">
+                            <h3 class="text-xl font-bold mb-3">ML Engineers</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Deep dive into agentic systems, multi-agent orchestration, and advanced AI infrastructure patterns for scalable deployments.
+                            </p>
+                        </article>
+                        <article class="bg-white rounded-xl p-8 border border-brand-200 card-hover accent-line-left pl-10 course2">
+                            <h3 class="text-xl font-bold mb-3">Backend Systems Engineers</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Learn to architect AI pipelines, integrate autonomous agents, and optimize performance at scale with production guardrails.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">About The Course</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">01</div>
+                            <h3 class="text-xl font-bold mb-3">LLM Mastery</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                From fundamentals to production. Master LLM architectures, function calling, structured outputs, and advanced prompting strategies.
+                            </p>
+                        </article>
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">02</div>
+                            <h3 class="text-xl font-bold mb-3">Agentic Systems</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Build multi-agent orchestration systems using LangGraph and Autogen. Master tool integration, autonomous execution, and coordination patterns.
+                            </p>
+                        </article>
+                        <article>
+                            <div class="text-5xl font-extrabold text-brand-200 mb-4">03</div>
+                            <h3 class="text-xl font-bold mb-3">Production Deployment</h3>
+                            <p class="text-brand-600 leading-relaxed">
+                                Deploy at scale with observability, performance guardrails, and cost optimization. Learn real-world deployment patterns and monitoring.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-brand-900 text-white border-t border-brand-800">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-8">Instructor</h2>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Lead AI Systems Engineer</h3>
+                            <p class="text-brand-300 text-lg mb-6">Expert in ML Engineering & Production AI Systems</p>
+                            <p class="text-brand-100 leading-relaxed mb-4">
+                                Specialized in LLM systems, autonomous agents, and scalable AI infrastructure. Brings production deployment experience from leading AI organizations.
+                            </p>
+                            <p class="text-brand-100 leading-relaxed">
+                                Expert in designing resilient AI systems that scale, optimizing costs, and implementing guardrails for enterprise reliability.
+                            </p>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-brand-700 aspect-[4/3] lg:aspect-square">
+                            <img src="image.jpg" alt="Lead AI Systems Engineer, instructor" class="w-full h-full object-cover opacity-90">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-brand-50 border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16">8-Week Syllabus</h2>
+                    <div class="grid md:grid-cols-2 gap-4" data-accordion="course2">
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 1: LLM Foundations & Function Calling</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Deep dive into large language models and structured outputs.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 2: Advanced RAG & Hybrid Search</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Production retrieval augmented generation systems.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 3: Multi-Agent Orchestration</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                LangGraph, Autogen, and agent coordination frameworks.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 4: Vector Storage & Optimization</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Quantization, indexing, and performance tuning.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 5: Tool Use & Sandboxing</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Agentic tool integration, code execution, and safety.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 6: Fine-Tuning & In-Context Learning</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Model adaptation trade-offs and optimization.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 7: Observability & Guardrails</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Monitoring, evaluation, and performance frameworks.
+                            </div>
+                        </details>
+                        <details class="syllabus-details bg-white rounded-xl border border-brand-200 overflow-hidden card-hover course2" open>
+                            <summary class="flex items-center justify-between p-6 text-left">
+                                <h4 class="font-bold text-brand-900 pr-4">Week 8: Production Deployment & Scaling</h4>
+                                <span class="chevron text-brand-400 flex-shrink-0"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                            </summary>
+                            <div class="px-6 pb-6 text-sm text-brand-600 leading-relaxed border-t border-brand-100 pt-4">
+                                Deployment patterns, latency optimization, and scaling.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section id="apply-course2" class="bg-white border-t border-brand-200">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Ready to Build Production AI?</h2>
+                    <p class="text-brand-600 mb-8 max-w-2xl mx-auto">Join senior engineers and ML specialists shipping autonomous AI systems.</p>
+                    <a href="mailto:sampenkinpa83@gmail.com?subject=Application%3A%20Advanced%20AI%20Engineering%20%26%20Agents" class="inline-flex items-center justify-center bg-course2 text-white font-semibold px-10 py-4 rounded-full hover:bg-amber-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-course2 text-lg">
+                        Apply Now
+                    </a>
+                </div>
+            </section>
+        </article>
+
+        <!-- Contact -->
+        <section id="contact" class="bg-white border-t border-brand-200">
+            <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 md:mb-16 text-center">Get In Touch</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <article class="bg-brand-50 rounded-xl p-8 text-center border border-brand-200 card-hover">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-brand-200 flex items-center justify-center text-brand-900">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Location</h4>
+                        <p class="text-brand-600 text-sm leading-relaxed">Level 40, 140 William Street<br>Melbourne, VIC 3000<br>Australia</p>
+                    </article>
+                    <article class="bg-brand-50 rounded-xl p-8 text-center border border-brand-200 card-hover">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-brand-200 flex items-center justify-center text-brand-900">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Phone</h4>
+                        <p class="text-brand-600 text-sm"><a href="tel:+61421649655" class="font-semibold hover:text-brand-900 transition-colors">+61 421 649 655</a></p>
+                    </article>
+                    <article class="bg-brand-50 rounded-xl p-8 text-center border border-brand-200 card-hover">
+                        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-white border border-brand-200 flex items-center justify-center text-brand-900">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Email</h4>
+                        <p class="text-brand-600 text-sm"><a href="mailto:sampenkinpa83@gmail.com" class="font-semibold hover:text-brand-900 transition-colors">sampenkinpa83@gmail.com</a></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-900 text-brand-300 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+            <p>&copy; 2026 Thornton LLC. All rights reserved.</p>
+            <nav aria-label="Footer" class="flex gap-6">
+                <a href="#courses" class="hover:text-white transition-colors">Courses</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const tabs = document.querySelectorAll('.course-tab');
+            const panels = {
+                1: document.getElementById('course1-content'),
+                2: document.getElementById('course2-content')
+            };
+
+            function switchCourse(num) {
+                const n = Number(num);
+                if (!panels[n]) return;
+
+                tabs.forEach(tab => {
+                    const isSelected = Number(tab.dataset.course) === n;
+                    tab.setAttribute('aria-selected', String(isSelected));
+                    const indicator = tab.querySelector('.tab-indicator');
+                    if (isSelected) {
+                        tab.classList.remove('text-brand-500', 'hover:text-brand-800');
+                        tab.classList.add('text-brand-900');
+                        indicator.classList.remove('bg-transparent');
+                        indicator.classList.add(n === 2 ? 'bg-course2' : 'bg-course1');
+                    } else {
+                        tab.classList.add('text-brand-500', 'hover:text-brand-800');
+                        tab.classList.remove('text-brand-900');
+                        indicator.classList.add('bg-transparent');
+                        indicator.classList.remove('bg-course1', 'bg-course2');
+                    }
+                });
+
+                Object.keys(panels).forEach(key => {
+                    const panel = panels[key];
+                    const isActive = Number(key) === n;
+                    if (isActive) {
+                        panel.classList.remove('hidden', 'is-inactive');
+                        panel.classList.add('is-active');
+                    } else {
+                        panel.classList.add('is-inactive');
+                        setTimeout(() => {
+                            if (!panel.classList.contains('is-active')) panel.classList.add('hidden');
+                        }, 250);
+                    }
+                });
+
+                history.replaceState(null, null, '#course' + n);
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => switchCourse(tab.dataset.course));
+            });
+
+            function initFromHash() {
+                const hash = location.hash;
+                if (hash === '#course2') switchCourse(2);
+                else switchCourse(1);
+            }
+
+            initFromHash();
+
+            // Header shadow on scroll
+            const header = document.getElementById('site-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 8) header.classList.add('nav-scrolled');
+                else header.classList.remove('nav-scrolled');
+            }, { passive: true });
+
+            // Mobile-only accordion: collapse syllabus details on small screens
+            function setAccordionState() {
+                const isMobile = window.innerWidth < 768;
+                document.querySelectorAll('.syllabus-details').forEach((details, index) => {
+                    if (isMobile && index > 0) details.removeAttribute('open');
+                    else details.setAttribute('open', '');
+                });
+            }
+            setAccordionState();
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(setAccordionState, 150);
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>
